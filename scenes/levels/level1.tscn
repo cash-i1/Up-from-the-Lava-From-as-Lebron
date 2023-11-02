@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://byp0rfdb8s2vo" path="res://assets/audio/death.wav" id="2_5c4d0"]
 [ext_resource type="PackedScene" uid="uid://4ih78j8en1hk" path="res://scenes/timer.tscn" id="2_ctdu2"]
 [ext_resource type="AudioStream" uid="uid://bds7afa5pdaia" path="res://assets/audio/Kevin MacLeod ~ Sneaky Snitch.mp3" id="3_1cycm"]
-[ext_resource type="PackedScene" uid="uid://csc4y55bxlon0" path="res://scenes/camera_movement_trigger.tscn" id="3_8a5mm"]
 [ext_resource type="PackedScene" uid="uid://2uwcb8r6ohw4" path="res://scenes/game_over.tscn" id="3_iogaf"]
 [ext_resource type="PackedScene" uid="uid://25qfwbj6j3yl" path="res://scenes/player.tscn" id="4_074p4"]
 [ext_resource type="PackedScene" uid="uid://cqn4a3sr7pnen" path="res://scenes/platform.tscn" id="5_32hxy"]
@@ -15,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/slippery_platform.gd" id="9_5mf8s"]
 [ext_resource type="PackedScene" uid="uid://xrsoqyvx2ewa" path="res://scenes/ball.tscn" id="10_r75uu"]
 [ext_resource type="PackedScene" uid="uid://cwa2k0r2fit" path="res://scenes/finish_line.tscn" id="13_p5j57"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="15_autiw"]
 
 [sub_resource type="Animation" id="Animation_47jgf"]
 resource_name = "move"
@@ -61,8 +61,6 @@ _data = {
 }
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_knr21"]
-friction = 0.05
-bounce = 1.0
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mccxw"]
@@ -101,7 +99,7 @@ size_flags_horizontal = 0
 color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("4_074p4")]
-position = Vector2(273, 265)
+position = Vector2(346, 265)
 scale = Vector2(0.58979, 0.58979)
 
 [node name="blocks" type="Node2D" parent="."]
@@ -308,7 +306,7 @@ position = Vector2(2902, 97)
 scale = Vector2(0.405339, 0.405339)
 
 [node name="spike24" parent="blocks" instance=ExtResource("8_py7hd")]
-position = Vector2(3143, 286)
+position = Vector2(3143, 289)
 rotation = 1.57079
 scale = Vector2(0.405339, 0.405339)
 
@@ -512,48 +510,7 @@ process_mode = 3
 position = Vector2(576, 324)
 scale = Vector2(1.31992, 1.45322)
 position_smoothing_enabled = true
-
-[node name="camera_movement_trigger" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(1142, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 350.0
-duration = 1.0
-
-[node name="camera_movement_trigger2" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(1507, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 700.0
-duration = 1.0
-
-[node name="camera_movement_trigger3" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(2033, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 800.0
-duration = 1.0
-
-[node name="camera_movement_trigger4" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(2774, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 800.0
-duration = 1.0
-
-[node name="camera_movement_trigger5" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(3490, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 800.0
-duration = 1.0
-
-[node name="camera_movement_trigger6" parent="camera" node_paths=PackedStringArray("camera_node") instance=ExtResource("3_8a5mm")]
-position = Vector2(4115, 299)
-scale = Vector2(1, 4.64)
-camera_node = NodePath("../camera")
-new_x_adjustment = 600.0
-duration = 1.0
+script = ExtResource("15_autiw")
 
 [connection signal="body_entered" from="blocks/spike" to="." method="_on_spike_body_entered"]
 [connection signal="body_entered" from="blocks/spike5" to="." method="_on_spike_body_entered"]

@@ -6,7 +6,5 @@ extends StaticBody2D
 
 func _on_collider_body_entered(body):
 	if body == player:
-	
-			
-		player.velocity += Vector2.DOWN * 3051
+		pass
 

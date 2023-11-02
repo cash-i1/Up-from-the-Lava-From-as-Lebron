@@ -29,7 +29,10 @@ func _on_quit_pressed():
 	
 func _on_http_request_completed(result, response_code, headers, body):
 	print(result, response_code, headers, body.get_string_from_utf8())
-	status.text = "saved " + str(global.score) + " as " + str(global.local_name) + "."
+	if response_code == 20:
+		status.text = "saved " + str(global.score) + " as " + str(global.local_name) + "."
+	else:
+		status.text = "couldn't save score: " + str(response_code)
 	
 
 
