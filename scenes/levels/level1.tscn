@@ -99,7 +99,7 @@ size_flags_horizontal = 0
 color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("4_074p4")]
-position = Vector2(346, 265)
+position = Vector2(347, 265)
 scale = Vector2(0.58979, 0.58979)
 
 [node name="blocks" type="Node2D" parent="."]

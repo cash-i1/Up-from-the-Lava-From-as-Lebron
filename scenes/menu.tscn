@@ -242,10 +242,10 @@ layout_mode = 2
 [node name="colour_input" type="ColorPicker" parent="TabContainer/customization"]
 visible = false
 layout_mode = 2
-offset_left = 890.0
-offset_top = -50.0
-offset_right = 1160.0
-offset_bottom = 518.0
+offset_left = 898.0
+offset_top = -46.0
+offset_right = 1164.0
+offset_bottom = 522.0
 
 [node name="colour" type="HSplitContainer" parent="TabContainer/customization"]
 layout_mode = 1
